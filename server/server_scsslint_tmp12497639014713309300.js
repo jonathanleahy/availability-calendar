@@ -6,27 +6,29 @@ var port = 8080;
 
 app.use(cors());
 
-app.get('/availability/AlexW@contoso', function (req, res) {
+app.get('/availability', function (req, res) {
     return res.json(
         [
             {
-                "Schedules": ["AlexW@contoso.OnMicrosoft.com"],
-                "StartTime": {
-                    "dateTime": "2018-08-06T09:00:00",
-                    "timeZone": "Pacific Standard Time"
-                },
-                "EndTime": {
-                    "dateTime": "2018-08-06T18:00:00",
-                    "timeZone": "Pacific Standard Time"
-                },
-                "availabilityViewInterval": "15"
-            }
+                "date": "15/10/2019",
+                "availableSlots": [
+                    {"startTime": "9:00", "endTime": "10:00"},
+                    {"startTime": "10:00", "endTime": "11:00"},
+                ]
+            },
+            {
+                "date": "16/10/2019",
+                "availableSlots": [
+                    {"startTime": "15:00", "endTime": "16:00"},
+                    {"startTime": "16:00", "endTime": "17:00"},
+                ]
+            },
         ]
     );
 });
 
 
-app.get('/schedule/AlexW@contoso', function (req, res) {
+app.get('/availability', function (req, res) {
     return res.json(
         {
             "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#Collection(microsoft.graph.scheduleInformation)",
@@ -91,7 +93,7 @@ app.get('/schedule/AlexW@contoso', function (req, res) {
                     }
                 }
             ]
-        })
+        }
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))

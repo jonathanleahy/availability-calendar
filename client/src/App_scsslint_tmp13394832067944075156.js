@@ -2,29 +2,30 @@ import React from 'react';
 import './App.css';
 import Diary from "./Components/Diary";
 import Schedule from "./Classes/Schedule";
-import cloneDeep from 'lodash/cloneDeep';
-import Availability from "./Classes/Availability";
+import cloneDeep from 'lodash';
 
 function App() {
 
-    const [availability, setAvailability] = React.useState(new Availability());
+    const [availability, setAvailability] = React.useState(null);
     const [schedule, setSchedule] = React.useState(new Schedule());
 
     React.useEffect(() => {
+        // fetch('http://localhost:8080/availability')
+        //     .then(results => results.json())
+        //     .then(data => {
+        //         setAvailability(data);
+        //     });
 
-        async function fetchAvailability() {
-            await availability.getAvailability();
-            const newAvailability = cloneDeep(availability);
-            setAvailability(newAvailability)
-        }
-        fetchAvailability();
+        async function fetchMyAPI() {
+            const response = await schedule.getLiveSchedule();
 
-        async function fetchSchedule() {
-            await schedule.getLiveSchedule();
-            const newSchedule = cloneDeep(schedule);
+            const newSchedule = clonedeep(schedule);
+
             setSchedule(newSchedule)
+            console.log("==="+response);
         }
-        fetchSchedule();
+
+        fetchMyAPI();
 
     }, []);
 

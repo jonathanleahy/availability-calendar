@@ -7,24 +7,24 @@ import Availability from "./Classes/Availability";
 
 function App() {
 
-    const [availability, setAvailability] = React.useState(new Availability());
+    const [availability, setAvailability] = React.useState(new Availability);
     const [schedule, setSchedule] = React.useState(new Schedule());
 
     React.useEffect(() => {
 
         async function fetchAvailability() {
-            await availability.getAvailability();
+            await schedule.getAvailability();
             const newAvailability = cloneDeep(availability);
             setAvailability(newAvailability)
         }
         fetchAvailability();
 
-        async function fetchSchedule() {
-            await schedule.getLiveSchedule();
-            const newSchedule = cloneDeep(schedule);
-            setSchedule(newSchedule)
-        }
-        fetchSchedule();
+        // async function fetchSchedule() {
+        //     await schedule.getLiveSchedule();
+        //     const newSchedule = cloneDeep(schedule);
+        //     setSchedule(newSchedule)
+        // }
+        // fetchSchedule();
 
     }, []);
 

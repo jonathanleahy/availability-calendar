@@ -6,7 +6,7 @@ var port = 8080;
 
 app.use(cors());
 
-app.get('/availability/AlexW@contoso', function (req, res) {
+app.get('/availability', function (req, res) {
     return res.json(
         [
             {
@@ -20,13 +20,12 @@ app.get('/availability/AlexW@contoso', function (req, res) {
                     "timeZone": "Pacific Standard Time"
                 },
                 "availabilityViewInterval": "15"
-            }
-        ]
+            }]
     );
 });
 
 
-app.get('/schedule/AlexW@contoso', function (req, res) {
+app.get('/diary', function (req, res) {
     return res.json(
         {
             "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#Collection(microsoft.graph.scheduleInformation)",
