@@ -1,6 +1,10 @@
 var express = require('express');
+var cors = require('cors');
+
 var app = express();
 var port = 8080;
+
+app.use(cors());
 
 app.get('/availability', function (req, res) {
     return res.json(

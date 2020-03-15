@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -10,7 +9,7 @@ function App() {
         fetch('http://localhost:8080/availability')
             .then(results => results.json())
             .then(data => {
-                setAvailability(data.results[0]);
+                setAvailability(data);
             });
     }, []);
 
@@ -23,7 +22,7 @@ function App() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Learn React
+                    Availability Calendar
                 </a>
                 {JSON.stringify(availability)}
             </header>
