@@ -1,3 +1,17 @@
+## Getting Started
+Clone the project: git clone https://github.com/jonathanleahy/availability-calendar.git
+
+cd into server
+Install the dependencies with: npm install
+Run the application with: npm run start
+
+Within another terminal:
+
+cd into client
+Install the dependencies with: npm install
+Run the application with: npm run start
+
+
 ## Availability calendar
 
 For this assignment we would like you to create a page at the url `/calendar` where you diplay the available slots when calling the availability API specced below.
